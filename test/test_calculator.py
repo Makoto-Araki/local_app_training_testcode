@@ -47,3 +47,26 @@ def test_divide_zero_custom():
 )
 def test_divide_normal(a, b, expected):
     assert divide(a, b) == expected
+
+# 正常系と異常系の混合パターン
+@pytest.mark.parametrize(
+    "a, b, expected",
+    [
+        (4, 2, 2),
+        (8, 2, 4),
+        (4, 0, ZeroDivisionError),
+    ],
+    ids=[
+        'normal-04',  # テストID
+        'normal-05',  # テストID
+        'abnormal-01',  # テストID
+    ]
+)
+def test_divide_mixed(a, b, expected):
+
+    # expectedがクラスか、expectedがExceptionを継承しているか、を判定
+    if isinstance(expected, type) and issubclass(expected, Exception):
+        with pytest.raises(expected):
+            divide(a, b)
+    else:
+        assert divide(a, b) == expected
