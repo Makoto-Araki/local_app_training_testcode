@@ -9,6 +9,8 @@ def mock_logger(monkeypatch):
 
     # calculator.loggerをmockに差し替え
     monkeypatch.setattr(calculator, "logger", mock)
+
+    # mockを返す
     return mock
 
 @pytest.fixture
