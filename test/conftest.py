@@ -2,8 +2,8 @@ import pytest
 from unittest.mock import MagicMock
 
 # 対象モジュールをインポート(logger差し替え用)
-import apps.hello as hello_module
-import apps.calculator as calculator_module
+#import apps.hello as hello_module
+#import apps.calculator as calculator_module
 
 # テスト対象関数をfixtureとして公開
 from apps.hello import hello
@@ -23,13 +23,13 @@ from apps.calculator import divide, divide_custom
 # --------------------------------------------------
 # hello.loggerをモックに差し替え
 # --------------------------------------------------
-@pytest.fixture
-def mock_hello_logger(monkeypatch):
-    mock = MagicMock()
-
-    # logger.infoやlogger.errorの呼び出し有無や回数を検証可能にする
-    monkeypatch.setattr(hello_module, "logger", mock)
-    return mock
+#@pytest.fixture
+#def mock_hello_logger(monkeypatch):
+#    mock = MagicMock()
+#
+#    # logger.infoやlogger.errorの呼び出し有無や回数を検証可能にする
+#    monkeypatch.setattr(hello_module, "logger", mock)
+#    return mock
 
 # --------------------------------------------------
 # hello関数を提供する
