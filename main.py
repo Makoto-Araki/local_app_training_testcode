@@ -6,8 +6,8 @@ from apps.calculator import divide, divide_custom
 # メイン関数
 # --------------------------------------------------
 def main():
-    #greeting = hello()
-    #print(greeting)
+    greeting = hello()
+    print(f'挨拶：{greeting}')
 
     answer = divide(4, 2)
     print(f'回答：{answer}')
