@@ -4,7 +4,6 @@ import apps.hello as hello_module
 from apps.hello import hello
 import apps.calculator as calculator_module
 from apps.calculator import divide, divide_custom
-import apps.calculator as calculator
 
 @pytest.fixture
 def mock_logger(monkeypatch):

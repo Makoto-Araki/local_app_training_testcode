@@ -1,12 +1,12 @@
 import logging
 from apps.hello import hello
-from apps.calculator import divide, divide_custom
+from apps.calculator import divide
 
 # --------------------------------------------------
 # メイン関数
 # --------------------------------------------------
 def main():
-    greeting = hello()
+    greeting = hello('Tanaka')
     print(f'挨拶：{greeting}')
 
     answer = divide(4, 2)

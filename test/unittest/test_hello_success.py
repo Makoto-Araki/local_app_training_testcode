@@ -4,7 +4,9 @@ import pytest
 # 正常系テスト
 # --------------------------------------------------
 def test_hello(hello_func):
-    assert hello_func() == 'Hello'
+
+    # 戻り値を確認
+    assert hello_func('Tanaka') == 'Hello Tanaka'
 
 # --------------------------------------------------
 # ログ出力テスト
@@ -15,7 +17,7 @@ def test_hello_logs(mock_hello_logger):
     from apps.hello import hello
 
     # テスト対象の関数実行（hello.logger は mock_hello_logger に差し替え済み）
-    hello()
+    hello('Tanaka')
 
     # logger.infoの部分が引数 hello called で１回のみ呼ばれたことを確認
     mock_hello_logger.info.assert_called_once_with('hello called')
