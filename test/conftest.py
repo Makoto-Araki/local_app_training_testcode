@@ -12,13 +12,13 @@ from apps.calculator import divide, divide_custom
 # --------------------------------------------------
 # calculator.loggerをモックに差し替え
 # --------------------------------------------------
-@pytest.fixture
-def mock_logger(monkeypatch):
-    mock = MagicMock()
-
-    # logger.infoやlogger.errorの呼び出し有無や回数を検証可能にする
-    monkeypatch.setattr(calculator_module, "logger", mock)
-    return mock
+#@pytest.fixture
+#def mock_logger(monkeypatch):
+#    mock = MagicMock()
+#
+#    # logger.infoやlogger.errorの呼び出し有無や回数を検証可能にする
+#    monkeypatch.setattr(calculator_module, "logger", mock)
+#    return mock
 
 # --------------------------------------------------
 # hello.loggerをモックに差し替え
