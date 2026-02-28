@@ -48,14 +48,18 @@ def test_divide_custom_zero_logs_caplog(caplog):
     # テスト対象のモジュールをインポート
     from apps.calculator import divide_custom
 
-    # ERRORレベル以上のログを捕捉し、発生する例外は吸収した上で divide_custom 実行時のログ出力を検証する
-    with caplog.at_level(logging.ERROR):
+    # INFOレベル以上のログを捕捉し、発生する例外は吸収した上で divide_custom 実行時のログ出力を検証する
+    with caplog.at_level(logging.INFO):
         with pytest.raises(ValueError):
             divide_custom(4, 0)
 
     # ログ数を確認する
-    assert len(caplog.records) == 1
+    assert len(caplog.records) == 2
+
     # ログレベルを確認する
-    assert caplog.records[0].levelname == "ERROR"
-    # zero divide is forbidden のログメッセージが出力されたことを確認する
-    assert caplog.records[0].message == 'zero divide is forbidden'
+    assert caplog.records[0].levelname == "INFO"
+    assert caplog.records[1].levelname == "ERROR"
+
+    # ログメッセージが出力されたことを確認する
+    assert caplog.records[0].message == 'divide_custom called'
+    assert caplog.records[1].message == 'zero divide is forbidden'

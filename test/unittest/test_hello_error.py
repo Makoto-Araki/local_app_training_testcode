@@ -10,13 +10,23 @@ import logging
         "hello",
         "Hello",
         "HELLO",
-        "HEllo"
+        "HEllo",
+        "",
+        1,
+        0,
+        -1,
+        None
     ],
     ids=[
         "invalid-name-01",
         "invalid-name-02",
         "invalid-name-03",
-        "invalid-name-04"
+        "invalid-name-04",
+        "invalid-name-05",
+        "invalid-name-06",
+        "invalid-name-07",
+        "invalid-name-08",
+        "invalid-name-09"
     ]
 )
 def test_hello_error(hello_func, invalid_name):
