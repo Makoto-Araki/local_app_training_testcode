@@ -24,7 +24,7 @@ def divide_custom(a, b):
 
     # ゼロ割り算で例外発生
     if b == 0:
-        logger.error('zero divide')
+        logger.error('zero divide is forbidden')
         raise ValueError('zero divide is forbidden')
 
     # 戻り値を返す

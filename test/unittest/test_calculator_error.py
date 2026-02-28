@@ -37,4 +37,4 @@ def test_divide_custom_zero_logs(mock_logger):
         divide_custom(4, 0)
 
     # エラーログの確認
-    mock_logger.error.assert_called_once_with('zero divide')
+    mock_logger.error.assert_called_once_with('zero divide is forbidden')
