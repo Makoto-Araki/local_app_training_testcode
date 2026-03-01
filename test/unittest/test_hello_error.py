@@ -51,19 +51,53 @@ def test_hello_error(hello_func, invalid_name):
 # --------------------------------------------------
 # エラーログテスト - caplog導入
 # --------------------------------------------------
+#def test_hello_error_logs_caplog(caplog):
+#
+#    # テスト対象のモジュールをインポート
+#    from apps.hello import hello
+#
+#    # ERRORレベル以上のログを捕捉し、発生する例外は吸収した上で hello 実行時のログ出力を検証する
+#    with caplog.at_level(logging.ERROR):
+#        with pytest.raises(ValueError):
+#            hello('hello')
+#
+#    # ログ数を確認する
+#    assert len(caplog.records) == 1
+#    # ログレベルを確認する
+#    assert caplog.records[0].levelname == "ERROR"
+#    # zero divide is forbidden のログメッセージが出力されたことを確認する
+#    assert caplog.records[0].message == 'argument is invalid'
+
+# --------------------------------------------------
+# 例外発生とログ検証を同時テスト
+# --------------------------------------------------
 def test_hello_error_logs_caplog(caplog):
 
     # テスト対象のモジュールをインポート
     from apps.hello import hello
 
-    # ERRORレベル以上のログを捕捉し、発生する例外は吸収した上で hello 実行時のログ出力を検証する
-    with caplog.at_level(logging.ERROR):
-        with pytest.raises(ValueError):
+    # INFOレベル以上のログを捕捉し、発生する例外は吸収した上で hello 実行時のログ出力を検証する
+    with caplog.at_level(logging.INFO):
+        with pytest.raises(ValueError) as exc_info:
             hello('hello')
 
+    # --------------------------------------------------
+    # 例外発生
+    # --------------------------------------------------
+
+    assert str(exc_info.value) == "argument is invalid"
+
+    # --------------------------------------------------
+    # ログ検証
+    # --------------------------------------------------
+
     # ログ数を確認する
-    assert len(caplog.records) == 1
+    assert len(caplog.records) == 2
+
     # ログレベルを確認する
-    assert caplog.records[0].levelname == "ERROR"
+    assert caplog.records[0].levelname == "INFO"
+    assert caplog.records[1].levelname == "ERROR"
+
     # zero divide is forbidden のログメッセージが出力されたことを確認する
-    assert caplog.records[0].message == 'argument is invalid'
+    assert caplog.records[0].message == 'hello called'
+    assert caplog.records[1].message == 'argument is invalid'
