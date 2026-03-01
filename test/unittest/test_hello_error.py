@@ -15,7 +15,12 @@ import logging
         1,
         0,
         -1,
-        None
+        None,
+        "tanaka1",  # 数字が混入
+        "1tanaka",  # 数字が混入
+        "ta",       # 3文字未満
+        "TanakaTanakaTanakaTanaka",  # 20文字より多い
+        "tanaka"    # 先頭が大文字でない
     ],
     ids=[
         "invalid-name-01",
@@ -26,7 +31,12 @@ import logging
         "invalid-name-06",
         "invalid-name-07",
         "invalid-name-08",
-        "invalid-name-09"
+        "invalid-name-09",
+        "invalid-name-10",
+        "invalid-name-11",
+        "invalid-name-12",
+        "invalid-name-13",
+        "invalid-name-14"
     ]
 )
 def test_hello_error(hello_func, invalid_name):
