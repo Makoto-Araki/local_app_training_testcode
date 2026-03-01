@@ -1,12 +1,15 @@
 import logging
 
 # モジュール専用のロガー取得
-logger = logging.getLogger(__name__)
+#logger = logging.getLogger(__name__)
 
 # --------------------------------------------------
 # 割り算の関数
 # --------------------------------------------------
-def divide(a, b):
+def divide(a, b, logger=None):
+
+    # ロガー取得
+    logger = logger or logging.getLogger(__name__)
 
     # ログ出力
     logger.info('divide called')
@@ -17,7 +20,10 @@ def divide(a, b):
 # --------------------------------------------------
 # 割り算の関数(カスタム)
 # --------------------------------------------------
-def divide_custom(a, b):
+def divide_custom(a, b, logger=None):
+
+    # ロガー取得
+    logger = logger or logging.getLogger(__name__)
 
     # ログ出力
     logger.info('divide_custom called')

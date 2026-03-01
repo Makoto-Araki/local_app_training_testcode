@@ -1,5 +1,7 @@
 import pytest
 import logging
+from unittest.mock import MagicMock
+from apps.hello import hello
 
 # --------------------------------------------------
 # 例外発生テスト
@@ -101,3 +103,17 @@ def test_hello_error_logs_caplog(caplog):
     # zero divide is forbidden のログメッセージが出力されたことを確認する
     assert caplog.records[0].message == 'hello called'
     assert caplog.records[1].message == 'argument is invalid'
+
+# --------------------------------------------------
+# エラーログテスト - mock使用
+# --------------------------------------------------
+def test_hello_error_with_mock():
+    mock_logger = MagicMock()
+
+    # このブロック内でValueErrorが発生することを期待
+    with pytest.raises(ValueError):
+        hello('hello', logger=mock_logger)
+
+    # テスト確認
+    mock_logger.info.assert_called_once_with('hello called')
+    mock_logger.error.assert_called_once_with('argument is invalid')

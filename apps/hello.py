@@ -2,15 +2,16 @@ import logging
 import re
 
 # モジュール専用のロガー取得
-logger = logging.getLogger(__name__)
+#logger = logging.getLogger(__name__)
 
 # --------------------------------------------------
 # Hello + 引数 と返す単純な関数
 # --------------------------------------------------
-def hello(name: str):
+def hello(name: str, logger=None):
     """
     入力:
         name: str型
+        logger: ロガー
 
     制約:
         - nameはstr型であること
@@ -27,6 +28,9 @@ def hello(name: str):
     異常系:
         制約違反時はValueErrorを送出
     """
+
+    # ロガー取得
+    logger = logger or logging.getLogger(__name__)
 
     # ログ出力
     logger.info('hello called')
