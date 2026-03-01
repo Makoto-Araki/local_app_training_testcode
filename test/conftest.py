@@ -6,8 +6,8 @@ from unittest.mock import MagicMock
 #import apps.calculator as calculator_module
 
 # テスト対象関数をfixtureとして公開
-from apps.hello import hello
-from apps.calculator import divide, divide_custom
+#from apps.hello import hello
+#from apps.calculator import divide, divide_custom
 
 # --------------------------------------------------
 # calculator.loggerをモックに差し替え
@@ -34,20 +34,27 @@ from apps.calculator import divide, divide_custom
 # --------------------------------------------------
 # hello関数を提供する
 # --------------------------------------------------
-@pytest.fixture
-def hello_func():
-    return hello
+#@pytest.fixture
+#def hello_func():
+#    return hello
 
 # --------------------------------------------------
 # divide関数を提供する
 # --------------------------------------------------
-@pytest.fixture
-def divide_func():
-    return divide
+#@pytest.fixture
+#def divide_func():
+#    return divide
 
 # --------------------------------------------------
 # divide_custom関数を提供する
 # --------------------------------------------------
+#@pytest.fixture
+#def divide_custom_func():
+#    return divide_custom
+
+# --------------------------------------------------
+# ロガー差し替えのための共通モック
+# --------------------------------------------------
 @pytest.fixture
-def divide_custom_func():
-    return divide_custom
+def mock_logger():
+    return MagicMock()

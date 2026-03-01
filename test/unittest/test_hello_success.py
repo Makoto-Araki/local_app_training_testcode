@@ -1,6 +1,6 @@
-import pytest
-import logging
-from unittest.mock import MagicMock
+#import pytest
+#import logging
+#from unittest.mock import MagicMock
 from apps.hello import hello
 
 # --------------------------------------------------
@@ -43,8 +43,7 @@ from apps.hello import hello
 # --------------------------------------------------
 # ログ出力テスト - mock使用
 # --------------------------------------------------
-def test_hello_success_with_mock():
-    mock_logger = MagicMock()
+def test_hello_success_with_mock(mock_logger):
 
     # ロガーを外部から注入
     result = hello('Tanaka', logger=mock_logger)

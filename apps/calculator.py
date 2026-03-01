@@ -7,6 +7,22 @@ import logging
 # 割り算の関数
 # --------------------------------------------------
 def divide(a, b, logger=None):
+    """
+    入力:
+        a: int型
+        b: int型
+        logger: ロガー
+
+    制約:
+        - aはint型であること
+        - bはint型であること
+
+    正常系:
+        a / b を返却
+
+    異常系:
+        制約違反時はZeroDivisionErrorを送出
+    """
 
     # ロガー取得
     logger = logger or logging.getLogger(__name__)
