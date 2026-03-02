@@ -1,16 +1,20 @@
 import logging
 from apps.hello import hello
 from apps.calculator import divide
+from apps.google_controller import run
 
 # --------------------------------------------------
 # メイン関数
 # --------------------------------------------------
 def main():
-    greeting = hello('Tanaka')
-    print(f'挨拶：{greeting}')
+    # Google RPA
+    run()
 
-    answer = divide(4, 2)
-    print(f'回答：{answer}')
+    #greeting = hello('Tanaka')
+    #print(f'挨拶：{greeting}')
+
+    #answer = divide(4, 2)
+    #print(f'回答：{answer}')
 
 # --------------------------------------------------
 # コマンド python main.py で main.py を直接実行時にコード実行
